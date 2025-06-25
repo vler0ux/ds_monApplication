@@ -1,0 +1,20 @@
+### Requête POST : créer un utilisateur
+POST http://10.112.133.249:3000/api/register
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZW1haWwiOiJsZWxlQG1haWwuY29tIiwicm9sZSI6IlNVUEVSVVNFUiIsImlhdCI6MTc0NzQ4MzMzNiwiZXhwIjoxNzQ3NDg2OTM2fQ.iFbA-rfEz9nMGy7M0a4EBHd1uKtbsxqWwp2IWVUhdjc
+
+{
+  "login": "vero@mail.com",
+  "mot_de_passe": "1234"
+}
+
+###
+
+### Requête POST : connexion
+POST http://10.112.133.249:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "vero@mail.com",
+  "mot_de_passe": "1234"
+}
