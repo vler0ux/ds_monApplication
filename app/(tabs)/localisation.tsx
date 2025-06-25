@@ -8,17 +8,37 @@ export default function App() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
-    (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission refusée pour accéder à la localisation.');
-        return;
-      }
+  (async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      setErrorMsg('Permission refusée pour accéder à la localisation.');
+      return;
+    }
 
-      const loc = await Location.getCurrentPositionAsync({});
-      setLocation(loc);
-    })();
-  }, []);
+    const loc = await Location.getCurrentPositionAsync({});
+    setLocation(loc);
+
+    // Envoi à l'API Express
+    try {
+      const response = await fetch('http://localhost:3000/api/location', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          latitude: loc.coords.latitude,
+          longitude: loc.coords.longitude,
+        }),
+      });
+
+      const data = await response.json();
+      console.log('Réponse API :', data);
+    } catch (error) {
+      console.error('Erreur envoi API :', error);
+    }
+  })();
+}, []);
+
 
   if (!location) {
     return (
