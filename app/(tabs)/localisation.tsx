@@ -20,7 +20,7 @@ export default function App() {
 
     // Envoi à l'API Express
     try {
-      const response = await fetch('http://localhost:3000/api/location', {
+      const response = await fetch('http://10.112.133.249:3000/api/location', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
