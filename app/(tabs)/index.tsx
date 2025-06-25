@@ -9,7 +9,7 @@ export default function Index({ onStart }: { onStart: () => void }) {
      
 
       <Text style={styles.title}>Bienvenue sur Localisation</Text>
-      <Text style={styles.subtitle}>Tu es prêt(e) à désamorcer les consignes? </Text>
+      <Text style={styles.subtitle}>Pour commencer à te géolocaliser</Text>
 
       <TouchableOpacity style={styles.startButton} onPress={() => router.push('/localisation')}>
         <Text style={styles.startText}>Commencer</Text>
