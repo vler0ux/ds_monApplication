@@ -3,20 +3,22 @@ const cors = require('cors');
 
 const app = express();
 const PORT = 3000;
+const coords = [];
 
 
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 
 
 app.post('/api/location', (req, res) => {
   const { latitude, longitude } = req.body;
   console.log(`Coordonnées reçues : Latitude=${latitude}, Longitude=${longitude}`);
+  coords.push({ latitude, longitude });
   res.json({ message: 'Coordonnées bien reçues' });
 });
 
-app.get('/', (req, res) => {
-  res.send('🚀 API Localisation opérationnelle !');
+app.get('/api/coords', (req, res) => {
+  res.json(coords);
 });
 
 

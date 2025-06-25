@@ -6,14 +6,14 @@ export default function Index({ onStart }: { onStart: () => void }) {
    const router = useRouter();
   return (
     <View style={styles.container}>
-     
-
       <Text style={styles.title}>Bienvenue sur Localisation</Text>
       <Text style={styles.subtitle}>Pour commencer à te géolocaliser</Text>
-
-      <TouchableOpacity style={styles.startButton} onPress={() => router.push('/localisation')}>
-        <Text style={styles.startText}>Commencer</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.startButton} onPress={() => router.push('/localisation')}>
+          <Text style={styles.startText}>Localisation</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.startButton} onPress={() => router.push('/coordonnees')}>
+          <Text style={styles.startText}>Coordonnées</Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -45,10 +45,12 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   startButton: {
-    backgroundColor: '#e63946',
-    paddingVertical: 12,
+    backgroundColor: '#9575CD',
+    bottom: 15,
+    paddingVertical:15,
     paddingHorizontal: 30,
-    borderRadius: 8,
+    borderRadius: 20,
+    marginVertical: 8
   },
   startText: {
     color: '#fff',
